@@ -4,16 +4,11 @@ public class Prompt
 
 {
     public string _words;
-    public List<Journal> _journal = new List<Journal>();
+    public List<prompts> _journal = new List<prompts>();
 
-    public void Display();
+    public void Display()
     {
-         Console.WriteLine($"Word: {_words}");
-         Console.WriteLine($"Journal:");
-         foreach(Journal Journal in _journal);
-        {
-          Journal.Display();
-        }
+         
     }
 }
 
