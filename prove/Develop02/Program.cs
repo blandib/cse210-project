@@ -1,13 +1,10 @@
 using System;
-//using System.ComponentModel.Design;
+using System.Collections.Generic;
 using System.IO;
-//using System.Xml.Serialization;
 
-
-
-class Program
+public class Program
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
         Console.WriteLine("Hello Develop02 World!");
         // Create an instance of the EntryManager class
@@ -59,7 +56,7 @@ class Program
                 Console.WriteLine(entry);
             }
  }
- public static void menu()
+ /*public static void menu()
  {
   int choice = 0;
   while (choice != 5)
@@ -79,5 +76,5 @@ class Program
     }
     Console.WriteLine("Thank for using the Journal. Goodbye!");
   }
- }
+ }*/
 }

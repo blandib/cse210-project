@@ -1,200 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-
-public class Entry
-    {
-        // Define properties for prompt, response, and date
-        public string Prompt { get; set; }
-        public string Response { get; set; }
-        public DateTime Date { get; set; }
-
-        // Define a constructor for Entry
-        public Entry(string prompt, string response, DateTime date)
-        {
-            Prompt = prompt;
-            Response = response;
-            Date = date;
-        }
-
-        // Define a method to save the entry to a file
-        public void SaveToFile(string fileName)
-        {
-            // Create a StreamWriter object to write to the file
-            using (StreamWriter writer = new StreamWriter(fileName))
-            {
-                // Write the prompt, the response, and the date to the file
-                writer.WriteLine("Prompt: " + Prompt);
-                writer.WriteLine("Response: " + Response);
-                writer.WriteLine("Date: " + Date.ToString("dd/MM/yyyy"));
-            }
-        }
-    }
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*class EntryManager
+using System.Collections.Generic;
+public class EntryManager
 {
     private List<Entry> entries;
     private Random random;
@@ -215,6 +22,10 @@ public class Entry
             "What was the strongest emotion I felt today?",
             "What is a goal you have for this week?",
             "If I had one thing I could do over today, what would it be?",
+            "Today was a good day?",
+            "What are you grateful for?",
+            "What are you looking forward to?",
+            "How was your day?",
             "Who was the most interesting person I interacted with today?"};
              // Choose a random prompt from the array
              int index = random.Next(prompts.Length);
@@ -255,7 +66,8 @@ public class Entry
             }
         }
        }
-    }*/
+    }
     
     
+
 
