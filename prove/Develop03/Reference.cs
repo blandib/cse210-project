@@ -36,7 +36,7 @@ using System.Linq;
     }
 
     // A method that displays the scripture with hidden words replaced by underscores
-    static void DisplayScripture()
+   public static void DisplayScripture()
     {
         // Loop through each line of the scripture
         for (int i = 0; i < scripture.Length; i++)
@@ -69,7 +69,7 @@ using System.Linq;
     }
 
     // A method that hides a few random words in the scripture and adds their indices to the list
-    static void HideWords()
+    private static void HideWords()
     {
         // Decide how many words to hide (between 1 and 4)
         int numWords = random.Next(1, 5);
