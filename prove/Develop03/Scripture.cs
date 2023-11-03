@@ -1,64 +1,92 @@
-using System;
-using System.Collections.Generic;
-/*public class Scripture
-{
-    public string Reference { get; set; }
-    public string Text { get; set; }
-}
-    // Constructor that takes the reference and text as parameters
-    public Scripture(string reference, string text)
-    {
-        Reference = reference;
-        Text = text;
-    }
+using System.Text;
 
-    Scripture john = new Scripture("John 3:16-18", new string[] {
-    "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life.",
-    "For God did not send his Son into the world to condemn the world, but to save the world through him.",
-    "Whoever believes in him is not condemned, but whoever does not believe stands condemned already because they have not believed in the name of God's one and only Son."
-});*/
-//{
-    public class Scripture
+namespace Develop03;
+
+// Represents a scripture verse and reference. It hides a random number of visible words before displaying.
+public class Scripture
+{
+  private List<Word> verse = new List<Word>();
+  private Reference reference;
+  private Random random = new Random();
+  private int wordsToHide;
+  private bool allowHiding = false;
+
+  public Scripture(string scripture, Reference reference)
+    : this(scripture, reference, 3)
+  {
+   Reference ref = new Reference("John", 3, 16);
+   Scripture references = new Scripture("For God so loved the world that He gave His one and only Son, that everyone who believes in Him shall not perish but have eternal life.", ref);
+   Console.WriteLine(references.Scripture);
+   Console.WriteLine(references.Reference.Book);
+   Console.WriteLine(references.Reference.Chapter); 
+   Console.WriteLine(references.Reference.Verse);
+   Console.WriteLine(references.IntValue);
+  }
+
+  // Initializes a Scripture with a verse (scripture) and reference. It also allow the caller to specify
+  // the number of visible words that should be hidden each time it is displayed.
+  public Scripture(string scripture, Reference reference, int wordsToHide)
+  {
+    parseScripture(scripture);
+    this.reference = reference;
+    this.wordsToHide = wordsToHide;
+    Verse = verse;
+    Reference = reference;
+    HiddenWords = hiddenWords;
+    
+
+  }
+
+  // Formats the verse and reference into a string. It also prevents hiding the first time it is displayed
+  // so that it shows the entire verse.
+  public override string ToString()
+  {
+    // Only hide after showing the verse once
+    if (allowHiding) hideWords();
+
+    StringBuilder sb = new StringBuilder();
+    sb.AppendLine(reference.ToString());
+    sb.AppendLine();
+    sb.Append(String.Join(" ", verse.Select(word => word.ToString())));
+    sb.AppendLine();
+    sb.AppendLine();
+    sb.AppendLine("Press enter to hide words, or 'quit' to exit.");
+
+    // Verse has been shown so allow hiding when showing again
+    allowHiding = true;
+
+    return sb.ToString();
+  }
+
+  // Is true when all Word in the verse have been hidden
+  public bool isFinished()
+  {
+    var count = verse.Count(word => word.getIsVisible());
+    return count == 0;
+  }
+
+  // Hides a random number of visible Words. The number of Word to hide is determined by wordsToHide.
+  private void hideWords()
+  {
+    // Get all visible Words
+    List<Word> visibleWords = verse.FindAll(word => word.getIsVisible());
+
+    // Hide some of the visible Words randomly
+    for (int i = 0; i < Math.Min(wordsToHide, visibleWords.Count); i++)
     {
-        // Properties
-        public string Reference {get; set;}
-        public string Text {get; set;}
-        // Constructor
-        public Scripture(string reference, string text)
-        {
-            Reference = reference;
-            Text = text;
-       }
-        // Method
-    public string HideWords(int n)
-    {
-            // Split the text into words
-            string [] words - Text.Split("");
-            Create a list to store the indices of the words to hide
-            list<int> indices = new list<int>();
-            // Create a random object
-            Random random = new Random();
-             Loop until n words are selected
-            while (indices.Count < n)
-            {
-                // Generate a random index between 0 and the length of the words array
-             int index = random.Next(0, words.length);
-             If the index is not already in the list, add it
-                if (! indices.Contains(index))
-                {
-                  indices.add(index);
-                }
-            }
-                //Loop through the words array
-                for (int i = 0; i <words.length; i++)
-            {
-                 If the index is in the list, replace the word with underscores
-                if (indices.Contains(i))
-            {
-                   words[i] = new string("_", words[i].length);
-                }
-            }
-            // Join the words back into a string and return it
-            return string.Join("", words);
-        } 
+      int index = random.Next(visibleWords.Count);
+      visibleWords[index].hide();
+      visibleWords = verse.FindAll(word => word.getIsVisible());
     }
+  }
+
+  // Parses a scripture verse (string) into Words
+  private void parseScripture(string scripture)
+  {
+    List<string> words = scripture.Split(" ").ToList();
+    foreach (string word in words)
+    {
+      this.verse.Add(new Word(word.Trim()));
+    }
+  }
+}
