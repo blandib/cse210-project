@@ -1,4 +1,4 @@
-using System;
+/*using System;
 using System.Collections.Generic;
 public class HideWords
 {
@@ -49,5 +49,5 @@ public class HideWords
         
         // Congratulate the user for Memorizer all words
         Console.WriteLine("Congratulations! You have Memorizer all words in the scripture.");
-    }
+    }*/
 

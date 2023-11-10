@@ -40,7 +40,7 @@ public class Word
     }
 }*/
 
-using System.ComponentModel.Design.Serialization;
+/*using System.ComponentModel.Design.Serialization;
 using System.Text.RegularExpressions;
 
 namespace Develop03;
@@ -66,4 +66,4 @@ public class Word
 	{
 		return isVisible ? word : Regex.Replace(word, "[a-zA-Z]", "_");
 	}
-}
+}*/

@@ -43,7 +43,7 @@ public class Program
         
         // When all words are hidden, end the program
         Console.WriteLine("All words are hidden. The program ends.");*/
- using System;
+ /*using System;
 using Develop03;
 
 class Program
@@ -103,7 +103,7 @@ and the god of Mahmackrah, and the god of Korash, and the god of Pharaoh, king o
 
         // Print a goodbye message when the loop ends
         Console.WriteLine("Goodbye!");
-    }
+    }*/
 
     
     

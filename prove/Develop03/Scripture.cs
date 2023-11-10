@@ -1,4 +1,4 @@
-using System.Text;
+/*using System.Text;
 
 namespace Develop03;
 
@@ -89,4 +89,4 @@ public class Scripture
       this.verse.Add(new Word(word.Trim()));
     }
   }
-}
+}*/
