@@ -4,7 +4,7 @@ using System.IO;
 //namespace Develop04;
 
 public class Listing()
- private List <string> clock = new List<string> {"|", "/", "—", "\\", "|", "/", "—", "\\"};
+ private List <string> start = new List<string> {"|", "/", "—", "\\", "|", "/", "—", "\\"};
     private List <string> prompts1 = new List<string> {"Who are people that you appreciate?", "What are personal strengths of yours?", "Who are people that you have helped this week?", "When have you felt the Holy Ghost this month?", "Who are some of your personal heroes?"};
     private List <string> items = new List<string> ();
     private Random random;
