@@ -23,7 +23,7 @@ public class Listing()
         Console.WriteLine("Consider the following prompt:");
         Random random = new Random();
         int activity2 = prompts1.Count();
-        Console.WriteLine($"--- {prompts1[rnd.Next(activity2)]} ---");
+        Console.WriteLine($"--- {prompts1[random.Next(activity2)]} ---");
         int k = 5;
          Console.WriteLine("You may begin in:");
             while (k > 0) {
