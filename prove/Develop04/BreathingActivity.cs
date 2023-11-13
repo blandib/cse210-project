@@ -1,11 +1,337 @@
-//namespace Develop04;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class BreathingActivity : Activity
+{
+        public BreathingActivity() 
+        {
+            _activityName = "Breathing Activity";
+            _activityDescription = "This activity will help you focus on your breathing and relax";
+        }
+        public override void Start()
+        {
+            // Start activity
+            base.Start();
+            // Perform activity
+
+            DateTime currentTime = DateTime.Now;
+            DateTime futureTime = DateTime.Now.AddSeconds(_duration);
+            do{
+                Console.WriteLine();
+                Console.Write("Breathe in...");
+                Animation(ANIMATION_COUNTDOWN, 4);
+                Console.WriteLine();
+                Console.Write("Breathe out...");
+                Animation(ANIMATION_COUNTDOWN, 6);
+                Console.WriteLine();
+                currentTime = DateTime.Now;
+            }while(currentTime < futureTime);
+
+            base.End();
+        }
+}/*//namespace Develop04;
 using System;
 using System.Threading;
 using System.Diagnostics;
 /// <summary>
 /// Breathing activity
 /// </summary>
-public class Breath: program
+public class BreathingActivity: Activity
 {
   private const int BREATH_IN_DURATION = 3;
   private const int BREATH_OUT_DURATION = 3;
@@ -13,7 +339,7 @@ public class Breath: program
   /// <summary>
   /// Initializes Activity with name and description
   /// </summary>
-  public Breath()
+  public BreathingActivity()
   : base("Breathing", "This activity will help you relax by walking you through breathing in and out slowly. Clear your mind and focus on your breathing.")
   {
   }
