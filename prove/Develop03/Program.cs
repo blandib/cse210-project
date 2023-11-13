@@ -1,12 +1,4 @@
 using System;
-
-/***********************************************************************************************
- - Showing Creativity and Exceeding Requirements
-
- 1) This program work with a library of scriptures rather than a single one.
- 2) This program loads scriptures from a file
-
-************************************************************************************************/
 class Program
 {
     static void Main(string[] args)
