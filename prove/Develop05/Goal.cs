@@ -1,88 +1,89 @@
-
-public class Goal
+public abstract class Goal
 {
-  protected string _name;
-  protected string _description;
-  protected int _points;
-  protected bool _achievement;
+    protected string _goalName;
+    protected string _goalDescription;
+    protected int _goalValueInPoints;
+    protected bool _completed = false;
+    protected int _earnedPoints;
 
-
-  public Goal(){
-    Console.Write("What is the name of your goal? ");
-    string name = Console.ReadLine();
-    Console.Write("What is the short description of it? ");
-    string description = Console.ReadLine();
-    Console.Write("What is the amount of points associated with this goal? ");
-    int points = int.Parse(Console.ReadLine());
-    _name = name;
-    _description = description;
-    _points = points;
-    _achievement = false;
-  }
-
-  public Goal(string name, string description, int points)
-  {
-    _name = name;
-    _description = description;
-    _points = points;
-    _achievement = false;
-  }
-
-  public Goal(string name, string description, int points, bool achievement)
-  {
-    _name = name;
-    _description = description;
-    _points = points;
-    _achievement = achievement;
-  }
-
-  public string GetName()
-  {
-    return _name;
-  }
-  public void SetName(string name)
-  {
-    _name = name;
-  }
-  public string GetDescription()
-  {
-    return _description;
-  }
-  public void SetDescription(string description)
-  {
-    _description = description;
-  }
-  public int GetPoints()
-  {
-    return _points;
-  }
-  public void SetPoints(int points)
-  {
-    _points = points;
-  }
-  public virtual bool GetAchievement()
-  {
-    return _achievement;
-  }
-  public virtual void SetAchievement(bool achievement)
-  {
-    _achievement = achievement;
-  }
-
-  public virtual int completionEvent(){
-    SetAchievement(true);
-    return GetPoints();
-  }
-
-  public virtual string Display(){
-    return $"[{(GetAchievement()?'X':' ')}] {GetName()} ({GetDescription()})" ;
-  }
-  public virtual string Stringify(){
-    return $"{GetType()}|{GetName()}|{GetDescription()}|{GetPoints()}|{GetAchievement()}" ;
-  }
-
-    internal static void Add(Goal goal)
+    public Goal()
     {
-        throw new NotImplementedException();
+
     }
+    public Goal(string name, string description, int goalValue, bool completed, int earnedPoints)
+    {
+        _goalName = name;
+        _goalDescription = description;
+        _goalValueInPoints = goalValue;
+        _completed = completed;
+        _earnedPoints = earnedPoints;
+
+    }
+
+    public Goal(string name, string description, bool completed)
+    {
+        _goalName = name;
+        _goalDescription = description;
+        _completed = completed;
+    }
+    public string GetGoalName()
+    {
+        return _goalName;
+    }
+    public void SetGoalName(string name)
+    {
+        _goalName = name;
+    }
+
+
+    public string GetDescription()
+    {
+        return _goalDescription;
+    }
+    public void SetDescription(string description)
+    {
+        _goalDescription = description;
+    }
+
+    public int GetgoalPoints()
+    {
+        return _goalValueInPoints;
+    }
+    public void SetgoalPoints(int _points)
+    {
+        _goalValueInPoints = _points;
+    }
+
+
+    public void SetCompleted(bool x)
+    {
+        _completed = x;
+    }
+    public bool GetCompleted()
+    {
+        return _completed;
+    }
+
+
+
+    public void SetEarnedPoints(int points)
+    {
+        _earnedPoints = _earnedPoints + points;
+    }
+    public int GetEarnedPoints()
+    {
+        return _earnedPoints;
+    }
+
+
+
+
+
+
+
+    public abstract void CreateGoal();
+
+    public abstract void RecordEvent();
+    public abstract string PrintIsComplete();
+
 }

@@ -1,86 +1,77 @@
-using System;
-public class CheckListGoal : Goal
+public class ChecklistGoal : Goal
 {
-  private int _achievementCount;
-  private int _achievementGoal;
-  private int _bonus;
-
-  public CheckListGoal() : base()
-  {
-    Console.Write("How many time this goal need to be accomplished for a bonus? ");
-    int achievementGoal = int.Parse(Console.ReadLine());
-    Console.Write("What is the bonus for accomplishing it that many times? ");
-    int bonus = int.Parse(Console.ReadLine());
-
-    _bonus = bonus;
-    _achievementCount = 0;
-    _achievementGoal = achievementGoal;
-  }
-
-  public CheckListGoal(string name, string description, int points, int achievementGoal, int bonus) : base(name, description, points)
-  {
-    _bonus = bonus;
-    _achievementCount = 0;
-    _achievementGoal = achievementGoal;
-  }
-
-  public CheckListGoal(string name, string description, int points, int achievementCount, int achievementGoal, int bonus) : base(name, description, points)
-  {
-    _bonus = bonus;
-    _achievementCount = achievementCount;
-    _achievementGoal = achievementGoal;
-  }
-
-  public int GetAchievementCount()
-  {
-    return _achievementCount;
-  }
-  public void SetAchievementCount(int achievementCount)
-  {
-    _achievementCount = achievementCount;
-  }
-
-  public int GetAchievementGoal()
-  {
-    return _achievementGoal;
-  }
-  public void SetAchievementGoal(int achievementGoal)
-  {
-    _achievementGoal = achievementGoal;
-  }
-
-  public int GetBonus()
-  {
-    return _bonus;
-  }
-  public void SetBonus(int bonus)
-  {
-    _bonus = bonus;
-  }
-
-  public void IncrementAchievementCount()
-  {
-    _achievementCount += 1;
-  }
-
-  public override int completionEvent(){
-    if(GetAchievementCount() < GetAchievementGoal()){
-      IncrementAchievementCount();
-      SetAchievement(GetAchievementCount() == GetAchievementGoal());
-      return GetPoints();
+    private int _goalComplet;
+    private int _goalBonusPoints;
+    private int _progress;
+    public ChecklistGoal(string _goalName, string _goalDescription, int progress, int goalComplet, int goalBonus, bool _completed, int _goalValueInPoints, int _earnedPoints) : base(_goalName, _goalDescription, _goalValueInPoints, _completed, _earnedPoints)
+    {
+        _goalComplet = goalComplet;
+        _goalBonusPoints = goalBonus;
+        _progress = progress;
     }
-    return 0;
-  }
+    public void SetProgress()
+    {
+        _progress++;
+    }
+    public int GetProgress()
+    {
+        return _progress;
+    }
+    public void SetgoalComplet(int goal)
+    {
+        _goalComplet = goal;
+    }
+    public int GetgoalComplet()
+    {
+        return _goalComplet;
+    }
+    public void SetBonus(int goal)
+    {
+        _goalBonusPoints = goal;
+    }
+    public int GetBonus()
+    {
+        return _goalBonusPoints;
+    }
+    public ChecklistGoal()
+    {
+    }
+    public override void CreateGoal()
+    {
+        Console.WriteLine("What is the name of your goal? ");
+        SetGoalName(Console.ReadLine());
+        Console.WriteLine("What is the short description of it? ");
+        SetDescription(Console.ReadLine());
+        Console.WriteLine("How many points do you want to set for this goal? ");
+        SetgoalPoints(Convert.ToInt32(Console.ReadLine()));
+        Console.WriteLine("How many times does this goal need to be accomplished for a bonus? ");
+        SetgoalComplet(Convert.ToInt32(Console.ReadLine()));
+        Console.WriteLine("What is the bonus for completing it many times?");
+        SetBonus(Convert.ToInt32(Console.ReadLine()));
+    }
+    public override void RecordEvent()
+    {
+        SetProgress();
+        SetEarnedPoints(GetgoalPoints());
 
+        if (GetProgress() == GetgoalComplet())
+        {
+            SetCompleted(true);
+            SetEarnedPoints(GetBonus());
+        }
 
+    }
 
-  public override string Display()
-  {
-    return $"{base.Display()} --- Currently Completed: {_achievementCount}/{_achievementGoal}";
-  }
-  public override string Stringify()
-  {
-    return $"{GetType()}|{GetName()}|{GetDescription()}|{GetPoints()}|{GetAchievementCount()}|{GetAchievementGoal()}|{GetBonus()}";
-  }
+    public override string PrintIsComplete()
+    {
+        if (GetCompleted())
+        {
+            return "[X]";
+        }
+        else
+        {
+            return "[ ]";
+        }
+    }
 
 }

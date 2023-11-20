@@ -1,12 +1,13 @@
-public class EternalGoal : Goal
+public class SimpleGoal : Goal
 {
-    public EternalGoal()
+    public SimpleGoal()
     {
     }
-    public EternalGoal(string _goalName, string _goalDescription, int _goalValueInPoints, bool _completed, int _earnedPoints) : base(_goalName, _goalDescription, _goalValueInPoints, _completed, _earnedPoints)
+    public SimpleGoal(string _goalName, string _goalDescription, int _goalValueInPoints, bool _completed, int _earnedPoints) : base(_goalName, _goalDescription, _goalValueInPoints, _completed, _earnedPoints)
     {
 
     }
+
     public override void CreateGoal()
     {
         Console.WriteLine("What is the name of your goal? ");
@@ -34,4 +35,5 @@ public class EternalGoal : Goal
             return "[ ]";
         }
     }
+
 }
